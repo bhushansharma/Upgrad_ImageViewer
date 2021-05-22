@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 
-const StyledMenu = withStyles({
+const MenuStyle = withStyles({
     paper: {
         border: '1px solid #d3d4d5',
         backgroundColor: '#DFDFDF',
@@ -22,7 +22,7 @@ const StyledMenu = withStyles({
     }
 })(Menu);
 
-const StyledMenuItem = withStyles(theme => ({
+const MenuItemStyle= withStyles(theme => ({
     root: {
         padding: 4,
         minHeight: 'auto',
@@ -46,7 +46,7 @@ class Header extends Component {
     }
 
     /**Handler to update state variable 'openMenu' and open the Menu item when the user clicks on profile icon */
-    profileIconHandler = (event) => {
+    onProfileIcon = (event) => {
         this.setState({ openMenu: !this.state.openMenu, anchorEl: event.currentTarget })
     }
 
@@ -58,13 +58,13 @@ class Header extends Component {
     }
 
     /**Handler to log out when user clicks on Logout menu item and remove access token from session */
-    logoutHandler = () => {
+    onLogout = () => {
         sessionStorage.removeItem('access-token');
         this.props.history.push('/');
     }
 
     /**Handler to take user back to Home page when clicked on logo */
-    logoHandler = () => {
+    onLogon = () => {
         this.props.history.push('/home');
     }
 
@@ -73,15 +73,14 @@ class Header extends Component {
             <div>
                 <header className="app-header">
                     {this.props.loggedIn && this.props.history.location.pathname === '/profile' ?
-                        <div onClick={this.logoHandler} className="app-logo-clickable">
+                        <div onClick={this.onLogon} className="app-logo-clickable">
                             <span className="app-logo">Image Viewer</span>
                         </div>
                         :
                         <div>
                             <span className="app-logo">Image Viewer</span>
                         </div>}
-                    {/**Below section needs to be displayed only for Home Page */}
-                    {/**Home Page Header section starts here */}
+                    
                     {this.props.loggedIn ?
                         <div className="app-header-right">
                             {this.props.homePage ?
@@ -92,27 +91,26 @@ class Header extends Component {
                                         </InputAdornment>
                                     } onChange={this.props.searchHandler} /> : ''}
                             <IconButton aria-controls="simple-menu" aria-haspopup="true"
-                                onClick={this.profileIconHandler} style={{ padding: "5px 10px" }}>
+                                onClick={this.onProfileIcon} style={{ padding: "5px 10px" }}>
                                 <Avatar variant="circular" alt={profilePic} src={profilePic} style={{border: '1px solid white'}} ></Avatar>
                             </IconButton>
-                            <StyledMenu id="simple-menu" open={this.state.openMenu} onClose={this.closeMenu}
+                            <MenuStyle id="simple-menu" open={this.state.openMenu} onClose={this.closeMenu}
                                 anchorEl={this.state.anchorEl} getContentAnchorEl={null}
                                 anchorOrigin={{ vertical: "bottom", horizontal: "right" }} keepMounted>
                                 {this.props.homePage ?
-                                    <StyledMenuItem onClick={this.props.myAccountHandler}>
+                                    <MenuItemStyle onClick={this.props.myAccountHandler}>
                                         <Typography>My Account</Typography>
-                                    </StyledMenuItem>
+                                    </MenuItemStyle>
                                     : ''}
                                 {this.props.homePage ?
                                     <Divider variant="middle" />
                                     : ''}
-                                <StyledMenuItem onClick={this.logoutHandler}>
+                                <MenuItemStyle onClick={this.onLogout}>
                                     <Typography>Logout</Typography>
-                                </StyledMenuItem>
-                            </StyledMenu>
+                                </MenuItemStyle>
+                            </MenuStyle>
                         </div>
                         : ''}
-                    {/**Home Page Header section ends here */}
                 </header>
             </div >
         )

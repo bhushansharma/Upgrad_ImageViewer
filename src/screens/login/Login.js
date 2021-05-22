@@ -23,25 +23,25 @@ class Login extends Component {
                 username: 'admin',
                 password: 'admin'
             },
-            accessToken: 'IGQVJXUVE1MXpNZAE10cjd4b2VOTVcyRTMwMW9BZA3Fnc0cyT2dEcTByOVZALaUV0VDN6aUdCXzRja1ZAhMEdQLTltX1dVcmNHOUtKaGJKMThlNVB1Q0FkMzZAReUxLSVZAtR1U4eUItZAjg2NlN5M0ROX25QaQZDZD',
+            accessToken: '8661035776.d0fcd39.39f63ab2f88d4f9c92b0862729ee2784',
             incorrectCredential: 'dispNone',
         };
     }
 
     /**Handler to update state variable 'username' as user enter values on the screen */
-    inputUsernameChangeHandler = (event) => {
+    onInputUsernameChange = (event) => {
         this.setState({ username: event.target.value })
     }
 
     /**Handler to update state variable 'password' as user enter values on the screen */
-    inputPasswordChangeHandler = (event) => {
+    onInputPasswordChange = (event) => {
         this.setState({ password: event.target.value })
     }
 
     /**Handler to login the user if valid credential (admin/ admin) is entered
      * else show valid error message to user
      */
-    loginHandler = () => {
+    onLogin = () => {
         this.state.username === '' ? this.setState({ usernameRequired: 'dispBlock' })
             : this.setState({ usernameRequired: 'dispNone' });
         this.state.password === '' ? this.setState({ passwordRequired: 'dispBlock' })
@@ -86,7 +86,7 @@ class Login extends Component {
                             <br />
                             <FormControl required className='login-form-control'>
                                 <InputLabel htmlFor='username'>Username</InputLabel>
-                                <Input id='username' type='text' onChange={this.inputUsernameChangeHandler} />
+                                <Input id='username' type='text' onChange={this.onInputUsernameChange} />
                                 <FormHelperText className={this.state.usernameRequired}>
                                     <span className='credential-required'>required</span>
                                 </FormHelperText>
@@ -95,7 +95,7 @@ class Login extends Component {
                             <br />
                             <FormControl required className='login-form-control'>
                                 <InputLabel htmlFor='password'>Password</InputLabel>
-                                <Input id='password' type='password' onChange={this.inputPasswordChangeHandler} />
+                                <Input id='password' type='password' onChange={this.onInputPasswordChange} />
                                 <FormHelperText className={this.state.passwordRequired}>
                                     <span className='credential-required'>required</span>
                                 </FormHelperText>
@@ -106,13 +106,13 @@ class Login extends Component {
                                 <span className='credential-required'>Incorrect username and/or password</span>
                             </FormHelperText>
                             <br />
-                            <Button variant='contained' color='primary' onClick={this.loginHandler}>
+                            <Button variant='contained' color='primary' onClick={this.onLogin}>
                                 LOGIN
                             </Button>
                         </CardContent>
                     </Card>
                 </div>
-                {/** Login Card ends here */}
+                
             </div>
         )
     }
