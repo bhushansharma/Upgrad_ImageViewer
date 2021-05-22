@@ -58,13 +58,13 @@ class Header extends Component {
     }
 
     /**Handler to log out when user clicks on Logout menu item and remove access token from session */
-    logoutHandler = () => {
+    onLogout = () => {
         sessionStorage.removeItem('access-token');
         this.props.history.push('/');
     }
 
     /**Handler to take user back to Home page when clicked on logo */
-    logoHandler = () => {
+    onLogon = () => {
         this.props.history.push('/home');
     }
 
@@ -73,7 +73,7 @@ class Header extends Component {
             <div>
                 <header className="app-header">
                     {this.props.loggedIn && this.props.history.location.pathname === '/profile' ?
-                        <div onClick={this.logoHandler} className="app-logo-clickable">
+                        <div onClick={this.onLogon} className="app-logo-clickable">
                             <span className="app-logo">Image Viewer</span>
                         </div>
                         :
@@ -105,7 +105,7 @@ class Header extends Component {
                                 {this.props.homePage ?
                                     <Divider variant="middle" />
                                     : ''}
-                                <MenuItemStyle onClick={this.logoutHandler}>
+                                <MenuItemStyle onClick={this.onLogout}>
                                     <Typography>Logout</Typography>
                                 </MenuItemStyle>
                             </MenuStyle>
