@@ -45,25 +45,23 @@ class Header extends Component {
         }
     }
 
-    /**Handler to update state variable 'openMenu' and open the Menu item when the user clicks on profile icon */
+    /**On Click of Profile Icon*/
     onProfileIcon = (event) => {
         this.setState({ openMenu: !this.state.openMenu, anchorEl: event.currentTarget })
     }
 
-    /**Handler to update state variable 'openMenu' and close the Menu item when the user clicks on profile icon
-     * or anywhere in the screen
-     */
+    /**Close Menu if User Click Anywhere on Screen*/
     closeMenu = () => {
         this.setState({ openMenu: !this.state.openMenu, anchorEl: null })
     }
 
-    /**Handler to log out when user clicks on Logout menu item and remove access token from session */
+    /**On Click of Logout Button */
     onLogout = () => {
         sessionStorage.removeItem('access-token');
         this.props.history.push('/');
     }
 
-    /**Handler to take user back to Home page when clicked on logo */
+    /**On Logon*/
     onLogon = () => {
         this.props.history.push('/home');
     }

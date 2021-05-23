@@ -250,7 +250,7 @@ class Profile extends Component {
         const { classes } = this.props;
         return (
             <div>
-                {/** Header component included here */}
+                {/** Header component*/}
                 <Header loggedIn={this.state.loggedIn} history={this.props.history} />
 
                 {/** User Info section*/}
@@ -302,7 +302,7 @@ class Profile extends Component {
                         ))}
                     </GridList>
                 </div>
-                {/** Edit Modal section*/}
+                {/** Edit Modal*/}
                 <Modal open={this.state.editModalIsopen} onClose={this.onCloseEditModal}
                     className="modal">
                     <div className={classes.editModalContent} style={{

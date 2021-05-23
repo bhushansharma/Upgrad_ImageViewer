@@ -28,19 +28,17 @@ class Login extends Component {
         };
     }
 
-    /**Handler to update state variable 'username' as user enter values on the screen */
+    /**On User Name Change*/
     onInputUsernameChange = (event) => {
         this.setState({ username: event.target.value })
     }
 
-    /**Handler to update state variable 'password' as user enter values on the screen */
+    /**On Password Change*/
     onInputPasswordChange = (event) => {
         this.setState({ password: event.target.value })
     }
 
-    /**Handler to login the user if valid credential (admin/ admin) is entered
-     * else show valid error message to user
-     */
+    /**Validate User while Loggin*/
     onLogin = () => {
         this.state.username === '' ? this.setState({ usernameRequired: 'dispBlock' })
             : this.setState({ usernameRequired: 'dispNone' });
@@ -70,10 +68,10 @@ class Login extends Component {
     render() {
         return (
             <div>
-                {/** Header component included here */}
+                {/**Header Component*/}
                 <Header />
 
-                {/** Login Card begins here */}
+                {/** Login Card */}
                 <div className="login-card-container">
                     <Card className="login-card">
                         <CardContent>

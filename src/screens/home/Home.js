@@ -71,7 +71,7 @@ class Home extends Component {
                                         media.caption = null;
                                     }
 
-                                    /** Adding likes and comments into each image */
+                                    
                                     const count = 0 + i;
                                     media.likeCount = count;
                                     media.likeStr = count > 1 ? 'likes' : 'like';
@@ -79,7 +79,7 @@ class Home extends Component {
                                     media.comments = [];
                                     media.comment = '';
 
-                                    /** Method to change date format to mm/dd/yyyy HH:MM:SS format */
+                                    /** Change date format to mm/dd/yyyy HH:MM:SS */
                                     const mediaDate = new Date(media.timestamp);
                                     const formattedDt = (mediaDate.getMonth() + 1).toString().padStart(2, '0') + '/'
                                         + mediaDate.getDate().toString().padStart(2, '0') + '/'
